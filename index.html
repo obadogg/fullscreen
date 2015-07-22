@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="fullscreen.js"></script>
+</head>
+<body>
+    <div class="main-mod">
+
+		<div class="row row1"></div>
+        <div class="row row2"></div>
+        <div class="row row3 "></div>
+        <div class="row row4"></div>
+        <div class="row row5"></div>
+        <div class="row row6"></div>
+     </div>
+
+    <div class="nav">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+<script type="text/javascript">
+    
+//调用
+var scroll = $.FullScreen({
+    move: '.main-mod',
+    row: '.row',
+    nav: '.nav',
+    time: '1s',
+    type: 'cubic-bezier(1,-0.12, 0.44, 0.99)',
+    navClass: 'cursor',
+    minHeight: 200
+})
+
+var aa = function(data) {
+        console.log(data)
+    }
+    //没有滚动情况
+scroll.on('no-scroll', aa)
+    //监听准备滚动事件
+scroll.on('ready-scroll', function(data) {
+        console.log(data)
+    })
+    //监听完成滚动事件
+scroll.on('done-scroll', function(data) {
+    console.log(data)
+})
+
+setTimeout(function() {
+    scroll.changeMoveType({
+        time: '3s',
+        tt: 11
+    })
+}, 2000)
+</script>
+</body>
+</html>
